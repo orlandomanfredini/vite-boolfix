@@ -1,15 +1,18 @@
 <script>
 import { store } from '../store.js'
 import AppLikeContent from './AppLikeContent.vue'
+import AppModal from './AppModal.vue'
 
 export default {
     components :{
       AppLikeContent,
+      AppModal
     },
     props: ['infoCard'],
     data() {
         return {
             store: store,
+            visibleModal: false,
 
             infoVote: {
                 vote: this.infoCard.vote_average,
@@ -37,13 +40,20 @@ export default {
 
             return imgPath = url + dimension + imgPath 
 
+        },
+        isVisible(){
+            this.visibleModal = true;
+
+        },
+        noVisible(){
+            this.visibleModal = false;
         }
     }
 }
 </script>
 
 <template>
-    <div class="col-3">
+    <div class="col-3" @mouseover="isVisible()" @mouseleave="noVisible()">
         <div class="card">
             <div class="box-img">
                 <img :src="composeImg(infoCard.poster_path)" alt="">
@@ -51,6 +61,7 @@ export default {
             <AppLikeContent :votes="infoVote" />
             
         </div>
+        <AppModal v-if="visibleModal"  :modalInfo="infoCard" :voteInfo="infoVote"/>
     </div>
     <!-- <div>{{ infoCard.original_title }}
         <span>{{ (infoCard.vote_average).toFixed(2) }}</span>
@@ -71,6 +82,7 @@ export default {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    position: relative;
 
     .card{
         display: flex;

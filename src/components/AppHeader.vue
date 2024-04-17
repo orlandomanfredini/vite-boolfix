@@ -57,8 +57,7 @@ export default {
 
             <div class="search">
                 <AppSelectContent />
-                <input @keyup.enter="createQuery()" type="text" placeholder="cerca film..."
-                    v-model.trim="store.inputQuery">
+                <input @keyup.enter="createQuery()" type="text" placeholder="cerca film..." v-model.trim="store.inputQuery">
                 <button @click="createQuery()">cerca</button>
 
             </div>

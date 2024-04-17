@@ -48,9 +48,11 @@ import {store} from '../store.js'
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 
     .icons{
         color: rgb(255, 247, 0);
+        transform: translateY(-1px);
     }
 
     .vote{

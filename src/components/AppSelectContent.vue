@@ -1,7 +1,7 @@
 <template>
     <select name="content" id="" v-model="store.selectValue">
         <option value="" disabled>Scegli</option>
-        <option value="film">Film</option>
+        <option value="film" selected>Film</option>
         <option value="serie">Series</option>
     </select>
 </template>
