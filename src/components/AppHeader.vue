@@ -1,8 +1,12 @@
 <script>
 import axios from 'axios';
 import { store } from '../store.js'
+import AppSelectContent from './AppSelectContent.vue';
 
 export default {
+    components: {
+        AppSelectContent,
+    },
     data() {
         return {
             store: store,
@@ -12,26 +16,33 @@ export default {
     },
     methods: {
         createQuery() {
-            axios.get('https://api.themoviedb.org/3/search/movie', {
-                params: {
-                    api_key: '61dea49fafd12f70156c7d08eaff1dc0',
-                    query: this.store.inputQuery,
-                }
-            })
-                .then((res) => {
-                    this.store.contents = res.data.results
-                    console.log(this.store.contents);
-                });
+            if (this.store.selectValue === 'film') {
+                axios.get('https://api.themoviedb.org/3/search/movie', {
+                    params: {
+                        api_key: '61dea49fafd12f70156c7d08eaff1dc0',
+                        query: this.store.inputQuery,
+                    }
+                })
+                    .then((res) => {
+                        this.store.contents = res.data.results
+                        console.log(this.store.contents);
+                    })
 
-            axios.get('https://api.themoviedb.org/3/search/tv', {
-                params: {
-                    api_key: '61dea49fafd12f70156c7d08eaff1dc0',
-                    query: this.store.inputQuery,
-                }
-            }).then((result) => {
-                this.store.contentsTv = result.data.results
-                console.log(this.store.contentsTv);
-            })
+            } else if (this.store.selectValue === 'serie') {
+                axios.get('https://api.themoviedb.org/3/search/tv', {
+                    params: {
+                        api_key: '61dea49fafd12f70156c7d08eaff1dc0',
+                        query: this.store.inputQuery,
+                    }
+                }).then((result) => {
+                    this.store.contents = result.data.results
+                    console.log(this.store.contentsTv);
+                })
+
+            }
+
+
+
 
         },
     }
@@ -42,12 +53,14 @@ export default {
     <header>
         <div class="row">
             <div class="logo">URLIX</div>
-            
+
 
             <div class="search">
+                <AppSelectContent />
                 <input @keyup.enter="createQuery()" type="text" placeholder="cerca film..."
                     v-model.trim="store.inputQuery">
                 <button @click="createQuery()">cerca</button>
+
             </div>
 
         </div>
@@ -78,7 +91,7 @@ header {
             font-size: 48px;
         }
 
-        
+
 
         .search {
 

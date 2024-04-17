@@ -9,5 +9,7 @@ export const store = reactive ({
     inputQuery: '',
     contents: [],
     contentsTv: [],
+    selectValue: '',
+    
   
   });
