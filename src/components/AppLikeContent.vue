@@ -48,6 +48,7 @@ import {store} from '../store.js'
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 5px;
     
 
     .icons{

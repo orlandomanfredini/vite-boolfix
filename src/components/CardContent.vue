@@ -78,7 +78,7 @@ export default {
 <style lang="scss" scoped>
 .col-3{
     width: calc( 3 * (100% / 12));
-    height: 300px;
+    height: 310px;
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -89,7 +89,9 @@ export default {
         flex-direction: column;
         
 
-
+        .box-img{
+            height: 280px;
+        }
         .box-img img{
             height: 280px;
 
