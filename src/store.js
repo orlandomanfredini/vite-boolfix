@@ -10,6 +10,7 @@ export const store = reactive ({
     contents: [],
     contentsTv: [],
     selectValue: '',
+    generi: [],
     
   
   });
