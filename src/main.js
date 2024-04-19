@@ -8,11 +8,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import { faStar, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faThumbsUp, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons'
 
 import { faStar as faStarReg } from '@fortawesome/free-regular-svg-icons'
 
-library.add(faStar, faStarReg, faThumbsUp) 
+library.add(faStar, faStarReg, faThumbsUp, faStarHalfStroke) 
 
 
 

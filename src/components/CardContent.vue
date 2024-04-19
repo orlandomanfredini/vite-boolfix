@@ -13,6 +13,9 @@ export default {
         return {
             store: store,
             visibleModal: false,
+            cast: {
+                id: this.infoCard.id
+            }, 
 
             infoVote: {
                 vote: this.infoCard.vote_average,
@@ -48,6 +51,9 @@ export default {
         noVisible(){
             this.visibleModal = false;
         }
+    },
+    mounted(){
+        
     }
 }
 </script>
@@ -61,7 +67,7 @@ export default {
             <AppLikeContent :votes="infoVote" />
             
         </div>
-        <AppModal v-if="visibleModal"  :modalInfo="infoCard" :voteInfo="infoVote"/>
+        <AppModal v-if="visibleModal"  :modalInfo="infoCard" :voteInfo="infoVote" :castName="cast"/>
     </div>
     <!-- <div>{{ infoCard.original_title }}
         <span>{{ (infoCard.vote_average).toFixed(2) }}</span>

@@ -11,6 +11,9 @@ export const store = reactive ({
     contentsTv: [],
     selectValue: '',
     generi: [],
+    castName: [],
+    
+    
     
   
   });

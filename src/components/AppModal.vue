@@ -13,6 +13,11 @@
                 {{ modalInfo.vote_count }}
             </div>
             <div class="date">{{ modalInfo.release_date }}</div>
+            <ul class="cast">
+                <li v-for="(cast, i) in store.castName" :key="i">{{ cast.name }}</li>
+            </ul>
+            <ul class="genres"></ul>
+            
             
             
 
@@ -26,6 +31,7 @@
 
 <script>
 
+import axios from 'axios';
 import { store } from '../store';
 
 export default {
@@ -33,10 +39,12 @@ export default {
         
 
     },
-    props: ['modalInfo', 'voteInfo'],
+    props: ['modalInfo', 'voteInfo', 'castName'],
     data() {
         return {
             store: store,
+            idCurrent : this.castName.id,
+            api_key: '61dea49fafd12f70156c7d08eaff1dc0'
         }
     },
     methods:{
@@ -53,6 +61,26 @@ export default {
                     return array2
                 }
             }
+    },
+    mounted(){
+        axios.get(`https://api.themoviedb.org/3/movie/${this.idCurrent}/credits`,{
+            params: {
+                api_key: '61dea49fafd12f70156c7d08eaff1dc0',
+            }
+        }
+    ).then((res)=>{
+        console.log(res.data.cast);
+        const castName = res.data.cast.splice(0, 5);
+
+        this.store.castName = castName;
+        
+        
+
+            
+        });
+    
+       
+
     }
 }
 </script>
@@ -97,6 +125,13 @@ export default {
 
     .date{
         margin-top: 5px;
+    }
+
+    .cast{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 
     
