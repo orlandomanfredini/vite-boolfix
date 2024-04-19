@@ -1,10 +1,12 @@
 <script>
 import { store } from '../store.js'
-import CardContent from './CardContent.vue'
+import CardContent from './CardContent.vue';
+import AppEmpty from './AppEmpty.vue';
 
 export default {
     components: {
         CardContent,
+        AppEmpty,
     },
     data() {
         return {
@@ -18,6 +20,8 @@ export default {
 
     <main>
         <div class="row">
+            <AppEmpty v-if="store.emptyContent !== ''" />
+            
 
             <CardContent v-for="(film, i) in store.contents" :key="i" :infoCard="film" />
 

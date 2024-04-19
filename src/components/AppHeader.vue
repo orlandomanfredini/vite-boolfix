@@ -12,13 +12,14 @@ export default {
     data() {
         return {
             store: store,
-            
+
 
         }
 
     },
     methods: {
         createQuery() {
+
             if (this.store.selectValue === 'film') {
                 axios.get('https://api.themoviedb.org/3/search/movie', {
                     params: {
@@ -29,6 +30,12 @@ export default {
                     .then((res) => {
                         this.store.contents = res.data.results
                         console.log(this.store.contents);
+
+                        if (res.data.results.length == 0) {
+                            this.store.emptyContent = 'Non ci sono contenuti per questa ricerca...'
+                        } else {
+                            this.store.emptyContent = '';
+                        }
                     })
 
             } else if (this.store.selectValue === 'serie') {
@@ -40,6 +47,11 @@ export default {
                 }).then((result) => {
                     this.store.contents = result.data.results
                     console.log(this.store.contentsTv);
+                    if (result.data.results.length == 0) {
+                        this.store.emptyContent = 'Non ci sono contenuti per questa ricerca...'
+                    } else {
+                        this.store.emptyContent = '';
+                    }
                 })
 
             } else {
@@ -52,6 +64,11 @@ export default {
                     .then((res) => {
                         this.store.contents = res.data.results
                         console.log(this.store.contents);
+                        if (res.data.results.length == 0) {
+                            this.store.emptyContent = 'Non ci sono contenuti per questa ricerca...'
+                        } else {
+                            this.store.emptyContent = '';
+                        }
                     })
             }
 

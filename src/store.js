@@ -12,6 +12,8 @@ export const store = reactive ({
     selectValue: '',
     generi: [],
     castName: [],
+    genresContent: [],
+    emptyContent: ''
     
     
     
