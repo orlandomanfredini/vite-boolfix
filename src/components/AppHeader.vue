@@ -28,9 +28,9 @@ export default {
                     }
                 })
                     .then((res) => {
+                        this.store.infoApi = res.data
                         this.store.contents = res.data.results
                         console.log(this.store.contents);
-
                         if (res.data.results.length == 0) {
                             this.store.emptyContent = 'Non ci sono contenuti per questa ricerca...'
                         } else {
@@ -45,6 +45,7 @@ export default {
                         query: this.store.inputQuery,
                     }
                 }).then((result) => {
+                    this.store.infoApi = res.data
                     this.store.contents = result.data.results
                     console.log(this.store.contentsTv);
                     if (result.data.results.length == 0) {
@@ -62,6 +63,8 @@ export default {
                     }
                 })
                     .then((res) => {
+                        this.store.infoApi = res.data
+                        console.log(this.store.infoApi);
                         this.store.contents = res.data.results
                         console.log(this.store.contents);
                         if (res.data.results.length == 0) {
@@ -73,7 +76,7 @@ export default {
             }
 
 
-
+            return this.store.staticInputQuery = this.store.inputQuery
 
         },
 
@@ -114,7 +117,7 @@ export default {
                 <AppSelectContent />
                 <input @keyup.enter="createQuery()" type="text" placeholder="cerca film..."
                     v-model.trim="store.inputQuery">
-                <button @click="createQuery()">cerca</button>
+                <button @click="createQuery()" >cerca</button>
 
             </div>
 

@@ -2,11 +2,13 @@
 import { store } from '../store.js'
 import CardContent from './CardContent.vue';
 import AppEmpty from './AppEmpty.vue';
+import AppSearchContent from './AppSearchContent.vue';
 
 export default {
     components: {
         CardContent,
         AppEmpty,
+        AppSearchContent,
     },
     data() {
         return {
@@ -19,7 +21,10 @@ export default {
 <template>
 
     <main>
+        <AppSearchContent v-if="(store.contents.length !== 0)" />
         <div class="row">
+
+            
             <AppEmpty v-if="store.emptyContent !== ''" />
             
 

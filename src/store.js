@@ -13,7 +13,9 @@ export const store = reactive ({
     generi: [],
     castName: [],
     genresContent: [],
-    emptyContent: ''
+    emptyContent: '',
+    infoApi: {},
+    staticInputQuery: '',
     
     
     
