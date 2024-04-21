@@ -16,6 +16,8 @@ export const store = reactive ({
     emptyContent: '',
     infoApi: {},
     staticInputQuery: '',
+    trendContents: [],
+    visibleTrend: true,
     
     
     

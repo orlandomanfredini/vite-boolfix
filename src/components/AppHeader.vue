@@ -19,8 +19,9 @@ export default {
     },
     methods: {
         createQuery() {
+            this.store.trendContents = false;
             if(this.store.inputQuery === ''){
-               return this.store.emptyContent = 'Mettere contenuto nell\'input di ricerca'
+               return this.store.emptyContent = 'Mettere contenuto nell\'input di ricerca per ottenere una risposta...'
             }
 
             if (this.store.selectValue === 'film') {
@@ -79,7 +80,7 @@ export default {
             }
 
 
-            return this.store.staticInputQuery = this.store.inputQuery
+            
 
         },
 
