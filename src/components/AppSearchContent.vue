@@ -1,6 +1,6 @@
 <template>
     <div>
-        Per questa ricerca sono stati trovati {{ store.infoApi.total_results }}, {{ selectVisible() }}
+        Per questa ricerca sono stati trovati {{ store.infoApi.total_results }}, {{ selectVisible() }} con questo nome:
         "{{ store.staticInputQuery }}"
     </div>
 </template>
@@ -29,6 +29,8 @@ import { store } from '../store';
 
 <style lang="scss" scoped>
 div{
+    padding: 0px 20px;
+    margin-top: 20px;
     color: red
 }
 

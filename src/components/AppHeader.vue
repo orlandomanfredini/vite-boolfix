@@ -19,6 +19,9 @@ export default {
     },
     methods: {
         createQuery() {
+            if(this.store.inputQuery === ''){
+               return this.store.emptyContent = 'Mettere contenuto nell\'input di ricerca'
+            }
 
             if (this.store.selectValue === 'film') {
                 axios.get('https://api.themoviedb.org/3/search/movie', {
@@ -45,9 +48,9 @@ export default {
                         query: this.store.inputQuery,
                     }
                 }).then((result) => {
-                    this.store.infoApi = res.data
+                    this.store.infoApi = result.data
                     this.store.contents = result.data.results
-                    console.log(this.store.contentsTv);
+                    console.log(this.store.contents);
                     if (result.data.results.length == 0) {
                         this.store.emptyContent = 'Non ci sono contenuti per questa ricerca...'
                     } else {
